@@ -8,7 +8,6 @@ class Prompt {
     public int promptInt(String message) {
         System.out.println(message);
         String userInput = scanner.nextLine();
-
         int userInt = 0;
         boolean isInt = false;
         while (!isInt) {
@@ -25,55 +24,36 @@ class Prompt {
         return userInt;
     }
 
-    public double promptDouble(String message) {
-        System.out.println(message);
-        String userInput = scanner.nextLine();
-
-        Double userDouble = 0.0;
+    public double promptDouble(String message){
         boolean isDouble = false;
-        while (!isDouble) {
+        String useString="";
+        double userDouble=0;
+        while (isDouble!=true) {
             try {
-                userDouble = Double.parseDouble(userInput);
-                isDouble = true;
-            } catch (NumberFormatException e) {
-                System.out.println(userInput + " is not a valid Double. " + message);
-                userInput = scanner.nextLine();
+                System.out.println(message);
+                useString = scanner.nextLine();
+                userDouble=Double.parseDouble(useString);
+                isDouble=true;
+            } catch (Exception NumberFormatException) {
+                System.out.println("Please enter an actual double bubble");
             }
+
 
         }
         return userDouble;
     }
-    public String promptString(String message) {
-        System.out.println(message);
-        String userInput = scanner.nextLine();
-
-        String userString = "";
+    public String promptString(String message){
         boolean isString = false;
-        while (!isString) {
+        String userString="";
+        while (isString!=true) {
             try {
-                while (userInput.equals("") || Integer.parseInt(userString) < 2147483647) {
-                    System.out.println("Please enter an String");
-                }
-
-            try{
-                while (userInput.equals("") || Double.parseDouble(userString ) < 2147483647 ){
-                    System.out.println("Please enter an String");
-
-                }
-
-
-            }catch(NumberFormatException e){
-                System.out.println(userInput + " is not a valid String. " + message);
-                userInput = scanner.nextLine();
+                System.out.println(message);
+                userString = scanner.nextLine();
+                Double.parseDouble(userString);
+                System.out.println("Please enter a valid string statement");
+            } catch ( NumberFormatException e) {
+                isString = true;
             }
-            }
-            catch (NumberFormatException e) {
-                System.out.println(userInput + " is not a valid String. " + message);
-                userInput = scanner.nextLine();
-            }
-            isString = true;
-
-
         }
         return userString;
     }
