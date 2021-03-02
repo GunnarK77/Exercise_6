@@ -8,6 +8,7 @@ class Prompt {
     public int promptInt(String message) {
         System.out.println(message);
         String userInput = scanner.nextLine();
+
         int userInt = 0;
         boolean isInt = false;
         while (!isInt) {
@@ -24,20 +25,20 @@ class Prompt {
         return userInt;
     }
 
-    public double promptDouble(String message){
-        boolean isDouble = false;
-        String useString="";
-        double userDouble=0;
-        while (isDouble!=true) {
-            try {
-                System.out.println(message);
-                useString = scanner.nextLine();
-                userDouble=Double.parseDouble(useString);
-                isDouble=true;
-            } catch (Exception NumberFormatException) {
-                System.out.println("Please enter an actual double bubble");
-            }
+    public double promptDouble(String message) {
+        System.out.println(message);
+        String userInput = scanner.nextLine();
 
+        Double userDouble = 0.0;
+        boolean isDouble = false;
+        while (!isDouble) {
+            try {
+                userDouble = Double.parseDouble(userInput);
+                isDouble = true;
+            } catch (NumberFormatException e) {
+                System.out.println(userInput + " is not a valid Double. " + message);
+                userInput = scanner.nextLine();
+            }
 
         }
         return userDouble;
@@ -51,7 +52,7 @@ class Prompt {
                 userString = scanner.nextLine();
                 Double.parseDouble(userString);
                 System.out.println("Please enter a valid string statement");
-            } catch ( NumberFormatException e) {
+            } catch (Exception NumberFormatException) {
                 isString = true;
             }
         }
